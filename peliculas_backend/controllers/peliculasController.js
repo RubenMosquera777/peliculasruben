@@ -17,7 +17,7 @@ if (!fs.existsSync(IMG_DIR)) {
   fs.mkdirSync(IMG_DIR, { recursive: true });
 }
 
-// Función para descargar imágenes y guardarlas localmente
+// para descargar imágenes y guardarlas localmente
 const descargarImagen = async (url, nombreArchivo) => {
   try {
     const response = await axios({
@@ -66,7 +66,7 @@ export const llenarPeliculasDesdeMarvel = async () => {
 };
 
 
-// Obtener todas las películas
+
 export const obtenerPeliculas = async (req, res) => {
   try {
     const peliculas = await Pelicula.find();
@@ -101,7 +101,7 @@ export const agregarPelicula = async (req, res) => {
           creador,
           fecha,
           imagen: `/img/${req.file.filename}`,
-          trailer: trailer || undefined // Usa el valor proporcionado o el valor por defecto del esquema
+          trailer: trailer || undefined 
       });
 
       await nuevaPelicula.save();
@@ -114,7 +114,7 @@ export const agregarPelicula = async (req, res) => {
 };
 
 
-// Actualizar una película existente
+
 export const actualizarPelicula = async (req, res) => {
   try {
       const id = req.params.id;
@@ -129,7 +129,7 @@ export const actualizarPelicula = async (req, res) => {
           const nuevaRutaImagen = `/img/${req.file.filename}`;
           const imagenAnterior = pelicula.imagen ? path.join(__dirname, "../", pelicula.imagen) : null;
 
-          // Borrar la imagen anterior si existía
+          // Borrar la imagen anterior si exisia
           if (imagenAnterior && fs.existsSync(imagenAnterior)) {
               fs.unlinkSync(imagenAnterior);
           }
@@ -137,7 +137,7 @@ export const actualizarPelicula = async (req, res) => {
           pelicula.imagen = nuevaRutaImagen; // Asignar la nueva imagen
       }
 
-      // Actualizar otros campos si están en el body
+      // Actualizar otros campos si estan en el body
       if (req.body.titulo) pelicula.titulo = req.body.titulo;
       if (req.body.descripcion) pelicula.descripcion = req.body.descripcion;
       if (req.body.formato) pelicula.formato = req.body.formato;
@@ -145,9 +145,9 @@ export const actualizarPelicula = async (req, res) => {
       if (req.body.fecha) pelicula.fecha = req.body.fecha;
 
       await pelicula.save();
-      res.status(200).json({ mensaje: "Película actualizada correctamente", pelicula });
+      res.status(200).json({ mensaje: "Pelicula actualizada correctamente", pelicula });
   } catch (error) {
-      console.error("Error al actualizar la película:", error);
+      console.error("Error al actualizar la pelicula:", error);
       res.status(500).json({ error: "Error al actualizar la película" });
   }
 };
@@ -157,7 +157,7 @@ export const obtenerPeliculaPorId = async (req, res) => {
   try {
       const pelicula = await Pelicula.findById(req.params.id);
       if (!pelicula) {
-          return res.status(404).json({ error: "Película no encontrada" });
+          return res.status(404).json({ error: "Pelicula no encontrada" });
       }
       res.json(pelicula);
   } catch (error) {
@@ -182,9 +182,9 @@ export const eliminarPelicula = async (req, res) => {
     }
 
     await Pelicula.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: "Película eliminada correctamente" });
+    res.status(200).json({ message: "Pelicula eliminada correctamente" });
   } catch (error) {
-    console.error("Error al eliminar la película:", error);
+    console.error("Error al eliminar la pelicula:", error);
     res.status(500).json({ error: "Error al eliminar la película." });
   }
 };
