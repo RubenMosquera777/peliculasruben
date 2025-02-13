@@ -14,24 +14,24 @@ const PORT = 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Corregir la ruta de la carpeta `peliculas`
+
 const publicPath = path.resolve(__dirname, "../");
 
-// Crear la app
+
 const app = express();
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 
-// Servir archivos estáticos
+
 app.use(express.static(publicPath));
-app.use("/img", express.static(path.join(__dirname, "img"))); // Servir imágenes
+app.use("/img", express.static(path.join(__dirname, "img")));
 
 // Rutas API
 app.use("/api/peliculas", peliculasRoutes);
 
-// Conectar a MongoDB y poblar si está vacío
+// Conectar a MongoDB y poblar si esta vacio
 mongoose
   .connect(MONGO_URI)
   .then(async () => {
@@ -39,7 +39,7 @@ mongoose
 
     const count = await Pelicula.countDocuments();
     if (count === 0) {
-      console.log("Base de datos vacía. Llenando con datos de Marvel...");
+      console.log("Base de datos vacia. Llenando con datos de Marvel...");
       await llenarPeliculasDesdeMarvel();
     } else {
       console.log("La base de datos ya contiene datos.");

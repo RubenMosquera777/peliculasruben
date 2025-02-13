@@ -4,11 +4,11 @@ async function cargarPeliculas() {
         const peliculas = await response.json();
         const container = document.getElementById("peliculas-container");
 
-        container.innerHTML = ""; // Limpiar antes de cargar
+        container.innerHTML = ""; 
 
         peliculas.forEach((pelicula) => {
             const card = document.createElement("div");
-            card.classList.add("col-md-4", "comic-card"); // Agregar la clase para filtrar
+            card.classList.add("col-md-4", "comic-card"); 
 
             card.innerHTML = `
                 <div class="card">

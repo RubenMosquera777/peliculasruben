@@ -1,4 +1,4 @@
-/* Estilos para el Hero Section */
+
 .hero {
     height: 50vh;
     display: flex;
@@ -94,15 +94,15 @@
 }
 
 .imagen-detalle img {
-    max-width: 60%;  /* La imagen ocupará como máximo el 80% del contenedor */
-    height: auto;    /* Mantiene la proporción de la imagen */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para resaltar */
+    max-width: 60%; 
+    height: auto;   
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 
 .inicio-bg {
-    background: linear-gradient(135deg, #1a1a1a, #ff0000); /* Degradado de negro a rojo */
+    background: linear-gradient(135deg, #1a1a1a, #ff0000); 
     height: 100vh;
     text-align: center;
 }
@@ -122,10 +122,10 @@
     transform: scale(1.05);
 }
 
-/* Estilos del login */
+
 .login-card {
-    background: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
-    backdrop-filter: blur(10px); /* Efecto borroso */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
     border-radius: 15px;
     max-width: 350px;
     width: 100%;
